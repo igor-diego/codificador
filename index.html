@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -14,30 +14,42 @@
 
         <fieldset>
             <h1>Criptografia</h1>
-            <textarea name="entrada" id="" cols="30" rows="10" placeholder="Digite sua mensagem aqui."></textarea>
-            <p>Escolha um método para codificar ou descoficar uma mesnsagem.</p>
+            <textarea name="entrada" id="" cols="30" rows="10" placeholder="Digite sua mensagem aqui."
+                required></textarea>
+            <p class="paragrafo">Escolha um método para codificar ou decoficar uma mesnsagem.</p>
 
-            <fiedset>
-                <select name="escolha" id="">
-                    <option value="">Escolha</option>
-                    <option value="">Cifra de César</option>
-                    <option value="">Base 64</option>
-                </select>
-            </fiedset>
-            
-            <fiedset class="selecao" >
-                    <input type="radio" name="codificar" id="codificar">
-                    <label for="">Codificar</label>
-                    <input type="radio" name="descodificar" value="codificar" id="">
-                    <label for="dec2">Descodificar</label>
+            <select name="escolha" id="escolher" required>
+                <option value="um">Escolha</option>
+                <option value="dois" id="codificar">Cifra de César</option>
+                <option value="tres" id="descodificar">Base 64</option>
+               <input class="passo" type="number" min="1" max="26" name="passo" id="passo-cifra">
+            </select>
             
 
+
+            
+
+            <fiedset class="opcao">
+
+                <div class="cod" id="coded">
+                    <input type="radio" name="botao" id="codificar" checked>
+                    <label for="codifica">Codificar</label>
+                </div>
+                <div id="decod">
+                    <input type="radio" name="botao" value="codificar" id="">
+                    <label for="decescodifica">Descodificar</label>
+                </div>
             </fiedset>
 
-        </fiedset>
+            <output class="saida">
+                <p></p>
+            </output>
 
+            <div id="botao"></div>
 
+            </fiedset>
     </form>
+    <script src="./index.js"></script>
 </body>
 
 </html>
