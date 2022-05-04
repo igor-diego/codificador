@@ -1,27 +1,72 @@
-var cifra = document.querySelector('#codificar')
-var escolher = document.querySelector('#escolher')
-var div1 = document.querySelector('#coded')
-var div2 = document.querySelector('#decod')
 var passo = document.querySelector('#passo-cifra')
-var botao = document.querySelector('#botao')
-var btn = document.createElement('button')
-botao.append(btn)
+var escolher = document.querySelector('#escolher')
+var codifica = document.querySelector('#cod')
+var decodificaRadio = document.querySelector('#decodifica')
+var btn = document.querySelector('#btn')
+var codificaRadio = document.querySelector('#codifica')
+var entrada = document.querySelector('#entrada')
+  var resultado = document.querySelector('#saida')
+var div1 = document.querySelector('#cod')
 
-btn.setAttribute("class", "botao-js")
 
-
-div1.addEventListener('click',function() {
-    btn.innerHTML = 'codificar'
-})
-
-div2.addEventListener('click',function() {
-    btn.innerHTML = 'decodificar'
-})
-
-escolher.addEventListener('change', function () {
-  if(escolher.value == 'dois') {
-      passo.style.display = 'flex'
+escolher.addEventListener('change', function() {
+  if(escolher.value == 'cifra') {
+    passo.style.display = 'flex'
   }else {
     passo.style.display = 'none'
   }
 })
+
+
+// base64
+
+decodificaRadio.addEventListener('change', function() {
+  if(codifica.value == 'codifica') {
+    btn.innerHTML = 'codificar'
+  }else btn.innerHTML = 'decodificar'
+})
+
+codifica.addEventListener('change',function() {
+  if(decodificaRadio.value == 'decodifica') {
+    btn.innerHTML = 'decodificar'
+  }else{
+    btn.innerHTML = 'codificar'
+  }
+} )
+
+
+btn.addEventListener('click', function(e) {
+  e.preventDefault()
+  if(escolher.value == 'base' && codificaRadio.checked) {
+
+  var retorno = ''
+  retorno = entrada.value
+
+  retorno = btoa(entrada.value)
+  resultado.innerHTML = retorno
+  }
+})
+
+
+btn.addEventListener('click', function(e) {
+  if(escolher.value == 'base' && decodificaRadio.checked) {
+    retorno = entrada.value
+
+  retorno = atob(entrada.value)
+  resultado.innerHTML = retorno
+
+  }
+})
+
+
+// CIFRA DE CESAR
+
+function codificaCifraDeCesar() {
+
+}
+
+
+
+function decodificaCifraDeCesar() {
+
+}
