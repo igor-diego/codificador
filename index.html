@@ -13,7 +13,7 @@
 <body>
     <form action="">
 
-        <fieldset>
+        <fieldset class="principal">
             <h1>Criptografia</h1>
             <textarea name="entrada" id="entrada" cols="30" rows="10" placeholder="Digite sua mensagem aqui."
                 required></textarea>
@@ -23,10 +23,10 @@
                 <option value="um">Escolha</option>
                 <option value="cifra" id="cifra">Cifra de César</option>
                 <option value="base" id="base">Base 64</option>
-               <input class="passo" type="number" min="1" max="26" name="passo" id="passo-cifra">
+                <input class="passo" type="number" min="1" max="26" name="passo" id="passo">
             </select>
-            
-    <fiedset class="opcao">
+
+            <fiedset class="opcao">
 
                 <div class="cod" id="cod">
                     <input type="radio" name="botao" value="" id="codifica" checked>
@@ -42,7 +42,7 @@
             <output id="saida" class="saida"></output>
 
             <div class="botao-hmtl" id="botao">
-                <button class="btn-html" id="btn" >Codificar</button>
+                <button class="btn-html" id="btn">Codificar</button>
             </div>
 
             </fiedset>

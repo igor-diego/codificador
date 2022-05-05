@@ -19,7 +19,7 @@ form {
     align-items: center;
 }
 
-fieldset {
+.principal {
     background: #000000c4;
     width: 500px;
     height: 500px;
@@ -82,7 +82,40 @@ select{
     border-radius: 7px;
     background: #00F3F7;
     color: #001842;
+    cursor: pointer;
+}
+
+@media(max-width:1441px) {
+    body {
+        height: 100vh;
+    }
+
+    .principal {
+        height: 35vh;
+        width: 60vw;
+
+    }
 }
 
 
+@media(max-width:769px) {
+    body {
+        height: 100vh;
+    }
 
+    .principal {
+        height: 33vh;
+        width: 80vw;
+    }
+}
+
+@media(max-width:426px) {
+    body {
+        height: 100vh;
+        font-size: 12px;
+    }
+
+    .principal {
+        width: 50vh;
+    }
+}
