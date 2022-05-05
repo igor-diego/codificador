@@ -5,7 +5,7 @@ var decodificaRadio = document.querySelector('#decodifica')
 var btn = document.querySelector('#btn')
 var codificaRadio = document.querySelector('#codifica')
 var entrada = document.querySelector('#entrada')
-  var resultado = document.querySelector('#saida')
+var resultado = document.querySelector('#saida')
 var div1 = document.querySelector('#cod')
 
 
@@ -45,7 +45,8 @@ btn.addEventListener('click', function(e) {
   retorno = btoa(entrada.value)
   resultado.innerHTML = retorno
   }
-})
+    
+  })
 
 
 btn.addEventListener('click', function(e) {
@@ -59,48 +60,76 @@ btn.addEventListener('click', function(e) {
 })
 
 
-// btn.addEventListener('click', function() {
-  
-//   var result = ''
-//   if(escolher.value == 'base' && codificaRadio.checked) {
-//     resultado = entrada.value
-//     for(var i =0; i < passo.value; i++) {
-//       resultado.innerHTML = codificaCifraDeCesar(result);
-//     }
-//   }
-// })
+btn.addEventListener('click', function(e) {
+e.preventDefault()
+if(escolher.value == 'cifra' && codificaRadio.checked) {
 
-// CIFRA DE CESAR
+  cifraDeCesar()
+}
+})
 
-// function codificaCifraDeCesar() {
-//   var texto = entrada.split()
-//   var newTexto = ''
-// for(var i =0; i < entrada.length; i ++) {
-//   var entradaAtual = entrada[i]
-// }
-// }
-
-// function codificaCifraDeCesar(str) {
-
-//   str = str.toUpperCase().split("")
-
-//   str = str.map(char => {
-//       var code = char.charCodeAt(0)
-
-//       if ((code >= 65 && code <= 89))
-//           code += 1
-//       else if (code >= 90)
-//           code = 65
-
-//       return String.fromCharCode(code)
-//   })
-
-//   return str.join("")
-// }
+btn.addEventListener('click', function() {
+  if(escolher.value == 'cifra' && decodificaRadio.checked) {
+    decodificaCesar()
+  }
+})
 
 
 
+function cifraDeCesar() {
+  var entradatxt = document.querySelector('#entrada').value
+  var passo = document.querySelector('#passo').value
+  var texto = ""
+  // var resultado = document.querySelector('#saida')
 
-// function decodificaCifraDeCesar() {
+  for(var i = 0; i < entradatxt.length; i++) {
+    var vPasso = parseInt(passo)
+    var numAscii = entradatxt[i].charCodeAt()
+    if(numAscii >= 65 && numAscii <= 90) {
+      var passoAlterado = numAscii + vPasso
+      if(passoAlterado > 90) {
+        passoAlterado = passoAlterado - 26
+      }
+      texto += String.fromCharCode(passoAlterado)
+    }else if(numAscii >= 97 && numAscii <= 122) {
+      var passoAlterado = numAscii + vPasso
+      if(passoAlterado > 122) {
+        passoAlterado = passoAlterado - 26
+        texto += entrada[i]
+      }
+      texto += String.fromCharCode(passoAlterado)
+    }else{
+      texto += entrada[i]
+    }
+    resultado.value = texto
+  }
+}
 
-// }
+
+function decodificaCesar() {
+  var entradatxt = document.querySelector('#entrada').value
+  var passo = document.querySelector('#passo').value
+  var texto = ""
+  // var resultado = document.querySelector('#saida')
+  for(var i = 0; i < entradatxt.length; i++) {
+    var vPasso = parseInt(passo)
+    var numAscii = entradatxt[i].charCodeAt()
+    if(numAscii >= 65 && numAscii <= 90) {
+      var passoAlterado = numAscii - vPasso
+      if(passoAlterado < 65) {
+        passoAlterado = 26 + passoAlterado 
+      }
+      texto += String.fromCharCode(passoAlterado)
+    }else if(numAscii >= 97 && numAscii <= 122) {
+      var passoAlterado = numAscii - vPasso
+      if(passoAlterado < 97) {
+        passoAlterado = 26 + passoAlterado 
+        texto += entrada[i]
+      }
+      texto += String.fromCharCode(passoAlterado)
+    }else{
+      texto += entrada[i]
+    }
+    resultado.value = texto
+  }
+}
